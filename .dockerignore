@@ -1,0 +1,20 @@
+# Django
+db.sqlite3
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+env/
+
+# Git
+.git/
+.gitignore
+
+# Node / frontend junk
+node_modules/
+build/
+
+# Environment files
+.env
