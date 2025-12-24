@@ -239,15 +239,20 @@ class TechnicianDashboardView(APIView):
                 "status": t.status,
                 "updated_at": t.updated_at,
             })
+        
+        recent_activity = sorted(
+            recent_activity,
+            key=lambda x: x["updated_at"],
+            reverse=True
+        )[:5]
 
         return Response({
             "counts": {
-                "open": tickets_qs.filter(status="OPEN").count(),
                 "in_progress": tickets_qs.filter(status="IN_PROGRESS").count(),
                 "resolved": tickets_qs.filter(status="RESOLVED").count(),
             },
             "active_tickets": TechnicianTicketSerializer(
-                tickets_qs.filter(status__in=["OPEN", "IN_PROGRESS"]),
+                tickets_qs.filter(status__in=["IN_PROGRESS"]),
                 many=True
             ).data,
             "resolved_tickets": TechnicianTicketSerializer(
@@ -361,6 +366,12 @@ class EmployeeDashboardView(APIView):
                 "message": f"Ticket for {t.asset.name} marked {t.status}",
                 "time": t.updated_at
             })
+        
+        recent_activity = sorted(
+            recent_activity,
+            key=lambda x: x["time"],
+            reverse=True
+        )[:5]
 
         return Response({
             "kpis": {

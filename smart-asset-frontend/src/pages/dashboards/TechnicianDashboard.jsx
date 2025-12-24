@@ -21,7 +21,6 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 
-import ConfirmationNumberOutlinedIcon from "@mui/icons-material/ConfirmationNumberOutlined";
 import PendingActionsOutlinedIcon from "@mui/icons-material/PendingActionsOutlined";
 import TaskAltOutlinedIcon from "@mui/icons-material/TaskAltOutlined";
 
@@ -119,27 +118,17 @@ const TechnicianDashboard = () => {
 
       {/* ===== KPI CARDS ===== */}
       <Grid container spacing={4}>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StatCard
-            title="Open Tickets"
-            value={counts?.open || 0}
-            subtitle="Tickets waiting to be worked on"
-            icon={<ConfirmationNumberOutlinedIcon />}
-            color="#EF4444"
-          />
-        </Grid>
-
-        <Grid item xs={12} md={4}>
-          <StatCard
-            title="In Progress"
+            title="New Jobs"
             value={counts?.in_progress || 0}
-            subtitle="Currently being handled"
+            subtitle="Tickets assigned to you"
             icon={<PendingActionsOutlinedIcon />}
             color="#F97316"
           />
         </Grid>
 
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={6}>
           <StatCard
             title="Resolved"
             value={counts?.resolved || 0}
