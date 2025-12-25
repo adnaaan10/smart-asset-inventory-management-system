@@ -2,9 +2,29 @@ import axios from "axios"
 import apiClient from "./apiClient";
 
 /* LOGIN */
+
+/* for run locally
 export async function loginUser(username, password) {
   const response = await axios.post(
     "http://127.0.0.1:8000/api/token/",
+    { username, password },
+  {
+    headers:{
+      "Content-Type":"application/json",
+    },
+  }
+  );
+
+  return response.data;
+}
+
+*/
+
+// for production
+
+export async function loginUser(username, password) {
+  const response = await axios.post(
+    "https://smart-asset-inventory-management-system.onrender.com/api/token/",
     { username, password },
   {
     headers:{

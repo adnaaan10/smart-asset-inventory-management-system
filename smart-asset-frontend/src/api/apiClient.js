@@ -1,7 +1,15 @@
 import axios from "axios";
 
+/* for run localy
+
 const apiClient = axios.create({
     baseURL: "http://127.0.0.1:8000/api/",
+});
+*/
+ 
+// for production
+const apiClient = axios.create({
+    baseURL: "https://smart-asset-inventory-management-system.onrender.com/api/",
 });
 
 
@@ -33,9 +41,17 @@ apiClient.interceptors.response.use(
 
         try {
             const refresh = localStorage.getItem("refresh_token");
-
+            
+            /* for run localy
             const response = await axios.post(
             "http://127.0.0.1:8000/api/token/refresh/",
+            { refresh }
+            );
+            */
+
+            // for production
+            const response = await axios.post(
+            "https://smart-asset-inventory-management-system.onrender.com/api/token/refresh/",
             { refresh }
             );
 
